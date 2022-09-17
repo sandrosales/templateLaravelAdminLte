@@ -12,8 +12,8 @@ cd app-laravel/
 
 cp .env.example .env
 
-## Atualize as variáveis de ambiente do arquivo .env
-
+ Atualize as variáveis de ambiente do arquivo .env
+```dosini
 APP_NAME=Portal
 APP_URL=http://portal:8181
 
@@ -31,7 +31,7 @@ SESSION_DRIVER=redis
 REDIS_HOST=redis
 REDIS_PASSWORD=null
 REDIS_PORT=6379
-
+```
 ## Atualize as variáveis de ambiente Docker
 docker-compose.yml
 Dockerfile
