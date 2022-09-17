@@ -1,1 +1,1 @@
-@section('title', 'Portal DPT')
+@section('title', 'Portal')
