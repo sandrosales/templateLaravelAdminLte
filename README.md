@@ -1,9 +1,9 @@
-## Passo a passo
+# Passo a passo
 
 ## Clone Repositório
-
+```sh
 git clone https://github.com/sandrosales/templateLaravelAdminLte.git app-laravel
-
+```
 ## Acesse o diretorio
 
 cd app-laravel/
