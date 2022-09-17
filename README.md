@@ -63,7 +63,7 @@ npm install
 ```sh
 npm install admin-lte@^3.2 --save
 ```
- Execute o servidor de desenvolvimento Vite...
+ Execute o comando npm run dev 
 ```sh
 npm run dev
 ```
