@@ -1,0 +1,109 @@
+version: "3.7"
+services:
+    # image project
+    app:
+        container_name: container-app
+        build:
+            args:
+                user: chacal
+                uid: 1000
+            context: ./
+            dockerfile: Dockerfile
+        image: especializati/laravel-app
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - redis
+        networks:
+            - rede_app
+
+    # nginx
+    nginx:
+        container_name: container-nginx-app
+        image: nginx:alpine
+        restart: unless-stopped
+        ports:
+            - 8181:80
+        volumes:
+            - ./:/var/www
+            - ./docker/nginx/:/etc/nginx/conf.d/
+            # - "/etc/certs:/etc/nginx/certs"
+        networks:
+            - rede_app
+
+    # db postgreSQL
+    database:
+        container_name: container-postgres-app
+        image: postgres:13-alpine
+        restart: unless-stopped
+        ports:
+            - ${POSTGRES_PORT:-5432}:5432
+        environment:
+            POSTGRES_DB: ${DB_DATABASE-database}
+            POSTGRES_USER: ${DB_USERNAME-user}
+            POSTGRES_PASSWORD: ${DB_PASSWORD-pass}
+            POSTGRES_HOST_AUTH_METHOD: trust
+            PGDATA: /data/postgres
+        volumes:
+            # - ./.docker/postgresql/data:/var/lib/postgres
+            - ./.docker/postgresql/data:/data/postgres
+        networks:
+            - rede_app
+        healthcheck:
+            test:
+                - CMD
+                - pg_isready
+                - -q
+                - -d
+                - $DB_DATABASE
+                - -U
+                - $DB_USERNAME
+
+    # nti_pgadmin:
+    #     container_name: container-pgadmin-app
+    #     image: dpage/pgadmin4
+    #     # image: dpage/pgadmin6
+    #     environment:
+    #         PGADMIN_DEFAULT_EMAIL: "sandrofsales@gmail.com"
+    #         PGADMIN_DEFAULT_PASSWORD: "12qw09po"
+    #     volumes:
+    #         - ./.docker/postgresql/data/pgadmin:/data/postgres
+    #     ports:
+    #         - "16543:80"
+    #     depends_on:
+    #         - database
+    #     networks:
+    #         - rede_app
+
+    # queue
+    queue:
+        container_name: container-queue-app
+        image: especializati/laravel-app
+        restart: unless-stopped
+        command: "php artisan queue:work"
+        build:
+            args:
+                user: chacal
+                uid: 1000
+            context: ./
+            dockerfile: Dockerfile
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - redis
+            - app
+        networks:
+            - rede_app
+
+    # redis
+    redis:
+        container_name: container-redis-app
+        image: redis:latest
+        networks:
+            - rede_app
+
+networks:
+    rede_app:
+        driver: bridge
