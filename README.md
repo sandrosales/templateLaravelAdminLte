@@ -34,10 +34,11 @@ REDIS_PASSWORD=null
 REDIS_PORT=6379
 ```
  Atualize as variáveis de ambiente Docker
+ ```dosini
 docker-compose.yml
 Dockerfile
 nginx/nginx/laravel.conf
-
+```
  Suba os containers do projeto
 ```sh
 docker-compose up -d
