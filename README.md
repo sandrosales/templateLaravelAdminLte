@@ -1,18 +1,18 @@
 # Passo a passo
 
-# Clone Repositório
+ Clone Repositório
 ```sh
 git clone https://github.com/sandrosales/templateLaravelAdminLte.git app-laravel
 ```
-# Acesse o diretorio
+ Acesse o diretorio
 ```sh
 cd app-laravel/
 ```
-# Crie o Arquivo .env
+ Crie o Arquivo .env
 ```sh
 cp .env.example .env
 ```
-# Atualize as variáveis de ambiente do arquivo .env
+ Atualize as variáveis de ambiente do arquivo .env
 ```dosini
 APP_NAME=Portal
 APP_URL=http://portal:8181
@@ -32,44 +32,44 @@ REDIS_HOST=redis
 REDIS_PASSWORD=null
 REDIS_PORT=6379
 ```
-# Atualize as variáveis de ambiente Docker
+ Atualize as variáveis de ambiente Docker
 docker-compose.yml
 Dockerfile
 nginx/nginx/laravel.conf
 
-# Suba os containers do projeto
+ Suba os containers do projeto
 ```sh
 docker-compose up -d
 ```
-# Acessar o container
+Acessar o container
 ```sh
 docker-compose exec app bash
 ```
-# Instalar as dependências do projeto Larevel
+ Instalar as dependências do projeto Larevel
 ```sh
 composer install
 ```
-# Gerar a key do projeto Laravel
+ Gerar a key do projeto Laravel
 ```sh
 php artisan key:generate
 ```
-# Instalando os pacote do Npm
+ Instalando os pacote do Npm
 ```sh
 npm install
 ```
-# Instalando os pacote do AdminLte via npm
+ Instalando os pacote do AdminLte via npm
 ```sh
 npm install admin-lte@^3.2 --save
 ```
-# Execute o servidor de desenvolvimento Vite...
+ Execute o servidor de desenvolvimento Vite...
 ```sh
 npm run dev
 ```
-# Construir e versionar os ativos para produção...
+ Construir e versionar os ativos para produção...
 ```sh
 npm run build
 ```
-# Acessar o projeto 
+ Acessar o projeto 
 ```sh
 http://localhost:8181
 ```
