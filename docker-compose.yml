@@ -61,13 +61,13 @@ services:
                 - -U
                 - $DB_USERNAME
 
-    # nti_pgadmin:
+    # pg_pgadmin:
     #     container_name: container-pgadmin-app
     #     image: dpage/pgadmin4
     #     # image: dpage/pgadmin6
     #     environment:
-    #         PGADMIN_DEFAULT_EMAIL: "sandrofsales@gmail.com"
-    #         PGADMIN_DEFAULT_PASSWORD: "12qw09po"
+    #         PGADMIN_DEFAULT_EMAIL: "seu-email@gmail.com"
+    #         PGADMIN_DEFAULT_PASSWORD: "senha"
     #     volumes:
     #         - ./.docker/postgresql/data/pgadmin:/data/postgres
     #     ports:

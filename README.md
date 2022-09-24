@@ -1,4 +1,4 @@
-## Template Laravel 9 com AdminLte 3.2 
+## Template Laravel 9 com AdminLte 3.2 com DOCKER
 # Passo a passo
 
  Clone Repositório
