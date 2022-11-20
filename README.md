@@ -74,5 +74,6 @@ npm run build
  Acessar o projeto 
 ```sh
 http://localhost:8181
+http://portal:8081/portal/admin/dashboard
 ```
 
